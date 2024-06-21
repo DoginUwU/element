@@ -162,9 +162,10 @@ export default {
           { originRenderCell(h, data) }
         </div>);
         this.owner.renderExpanded = (h, data) => {
+          console.log(data)
           return this.$scopedSlots.default
             ? this.$scopedSlots.default(data)
-            : this.$slots.default;
+            : this.$slots.default(data);
         };
       } else {
         originRenderCell = originRenderCell || defaultRenderCell;
@@ -313,6 +314,7 @@ export default {
   },
 
   render(h) {
+    console.log(this.$slots.default)
     // slots 也要渲染，需要计算合并表头
     return h('div', this.$slots.default);
   }
